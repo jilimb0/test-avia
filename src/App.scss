@@ -1,0 +1,221 @@
+.main-container {
+  display: flex;
+
+  img {
+    text-align: center;
+  }
+
+  .title {
+    font-style: normal;
+    font-size: 1.2em;
+    line-height: 2em;
+
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+
+    color: #4a4a4a;
+  }
+
+  .filters {
+    background: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 0 5% 0 0;
+    padding: 2.5% 0 0 2.5%;
+    width: 23.2em;
+    height: 25.2em;
+    .title-filter {
+      font-weight: 600;
+      font-size: 1.2em;
+      line-height: 1.2em;
+
+      display: flex;
+      align-items: flex-end;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+
+      color: #4a4a4a;
+
+      margin: 0 0 5% 0;
+    }
+    .list {
+      display: grid;
+
+      .custom-checkbox {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+      }
+
+      /* для элемента label, связанного с .custom-checkbox */
+      .custom-checkbox + label {
+        display: inline-flex;
+        align-items: center;
+        user-select: none;
+
+        font-weight: normal;
+        font-size: 1.3em;
+        line-height: 3em;
+
+        display: flex;
+        align-items: center;
+
+        color: #4a4a4a;
+      }
+
+      /* создание в label псевдоэлемента before со следующими стилями */
+      .custom-checkbox + label::before {
+        content: "";
+        display: inline-block;
+        width: 1.75em;
+        height: 1.75em;
+        flex-shrink: 0;
+        flex-grow: 0;
+
+        margin-right: 0.5em;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 50% 50%;
+        border: 1px solid #9abbce;
+        border-radius: 0.2em;
+      }
+
+      /* стили при наведении курсора на checkbox */
+      .custom-checkbox:not(:disabled):not(:checked) + label:hover::before {
+        border: 1px solid #2196f3;
+        // box-sizing: border-box;
+        border-radius: 2px;
+      }
+
+      /* стили для активного чекбокса (при нажатии на него) */
+      .custom-checkbox:not(:disabled):active + label::before {
+        border: 1px solid #2196f3;
+        // box-sizing: border-box;
+        border-radius: 2px;
+      }
+
+      /* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+      .custom-checkbox:focus:not(:checked) + label::before {
+        border: 1px solid #2196f3;
+        // box-sizing: border-box;
+        border-radius: 2px;
+      }
+
+      /* стили для чекбокса, находящегося в состоянии checked */
+      .custom-checkbox:checked + label::before {
+        border: 1px solid #2196f3;
+        // box-sizing: border-box;
+        border-radius: 2px;
+        background-image: url(./shape.svg);
+      }
+
+      /* стили для чекбокса, находящегося в состоянии disabled */
+      .custom-checkbox:disabled + label::before {
+        background-color: #e9ecef;
+      }
+    }
+  }
+
+  .main {
+    width: 502px;
+
+    .options {
+      display: flex;
+      height: 50px;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      border: 1px solid #dfe5ec;
+      .option {
+        width: 100%;
+        background-color: #fff;
+        display: grid;
+        place-items: center;
+        &:hover {
+          color: #fff;
+          background-color: #2196f3;
+          cursor: pointer;
+        }
+        &:nth-child(2) {
+          border-left: 1px solid #dfe5ec;
+          border-right: 1px solid #dfe5ec;
+        }
+      }
+    }
+
+    .results {
+      margin: 5% 0;
+      .res1 {
+        background-color: #fff;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+
+        padding: 5% 0 5% 5%;
+
+        margin: 0 0 5% 0;
+
+        display: grid;
+        grid-template-areas:
+          "price price carrier"
+          "details details details"
+          "details details details";
+
+        &:last-child {
+          margin: 0;
+        }
+
+        .price {
+          font-weight: 600;
+          font-size: 24px;
+          line-height: 24px;
+
+          color: #2196f3;
+        }
+        .carrier {
+          grid-area: carrier;
+          justify-self: center;
+        }
+        .details {
+          grid-area: details;
+          display: grid;
+          grid-template-areas:
+            "subtitle1 subtitle2 subtitle3"
+            "title1 title2 title3"
+            "subtitle4 subtitle5 subtitle6"
+            "title4 title5 title6";
+
+          margin: 5% 0 0 0;
+        }
+
+        .subtitle {
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 18px;
+
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+
+          color: #a0b0b9;
+        }
+        .title {
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 21px;
+
+          color: #4a4a4a;
+
+          margin: 0 0 5% 0;
+        }
+      }
+    }
+
+    .more {
+      color: #fff;
+      background: #2196f3;
+      border-radius: 5px;
+      border: none;
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+      width: 100%;
+      padding: 2%;
+    }
+  }
+}
